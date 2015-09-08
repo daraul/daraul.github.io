@@ -1,0 +1,33 @@
+---
+layout: page
+title: My Portfolio
+permalink: /portfolio/
+---
+
+<div class="container" id="portfolio-container">
+	<p>My Behance portfolio should appear here shortly...</p>
+</div>
+
+<!-- Thanks to http://www.osd.net/blog/web-development/javascript/jsonp-example/ for helping me with this one -->
+<script type="text/javascript">
+    function callBack(data) {
+        window.stuff = data;
+        setContent(data.projects)
+    }
+    
+    function setContent(data) {
+        var portfolio_container = $("#portfolio-container");
+        
+        var content = "";
+        
+        for(var i = 0; i < data.length; i++) {
+            var project = data[i];
+            
+            content += "<a href='" + project.url + "' target='_blank'>" + project.name + "</a><br />";
+        }
+        
+        portfolio_container.html(content);
+    }
+</script>
+
+<script src="http://www.behance.net/v2/users/daraul/projects?client_id=Yg7SOsRLGyvuotCuUwmHRSaOtwyW52YQ&callback=callBack"></script>

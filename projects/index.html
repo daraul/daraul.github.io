@@ -1,0 +1,32 @@
+---
+layout: page
+title: Projects
+permalink: /projects/
+---
+<div class="container" id="projects-container">
+	<p>All my projects will go here eventually...</p>
+</div>
+
+<!-- Thanks to http://www.osd.net/blog/web-development/javascript/jsonp-example/ for helping me with this one -->
+<script type="text/javascript">
+    function callBack(data) {
+        window.stuff = data;
+        setContent(data.data)
+    }
+    
+    function setContent(data) {
+        var projects_container = $("#projects-container");
+        
+        var content = "";
+        
+        for(var i = 0; i < data.length; i++) {
+            var project = data[i];
+            
+            content += "<a href='" + project.html_url + "' target='_blank'>" + project.name + "</a><br />";
+        }
+        
+        projects_container.html(content);
+    }
+</script>
+
+<script src="https://api.github.com/users/daraul/repos?callback=callBack"></script>

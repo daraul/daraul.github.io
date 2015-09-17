@@ -23,7 +23,7 @@ permalink: /portfolio/
         for(var i = 0; i < data.length; i++) {
             var project = data[i];
             
-            content += "<a href='" + project.url + "' target='_blank'>" + project.name + "</a><br />";
+            content += "<a href='" + project.url + "' target='_blank'><img src='" + project['covers']['202'] + "' title='" + project.name + "' /></a><br />";
         }
         
         portfolio_container.html(content);

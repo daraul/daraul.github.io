@@ -184,7 +184,16 @@
     font-size: 24px;
 }
 
-
+/* Pages */
+.page-content {
+    #portfolio-container {
+        display: flex;
+        
+        a {
+            margin-left: 10px;
+        }
+    }
+}
 
 /**
  * Posts

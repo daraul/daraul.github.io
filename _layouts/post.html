@@ -14,10 +14,10 @@ layout: default
     </div>
     
     <ul class="category-list">
-        {% for category in site.categories %}
+        {% for category in page.categories %}
             <li>
                 <h3>
-                    {{ category[0] }} 
+                    <a href="../categories/#{{ category }}">{{ category }}</a>
                 </h3>
             </li>
         {% endfor %}

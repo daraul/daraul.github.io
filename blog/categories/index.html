@@ -1,0 +1,56 @@
+---
+layout: default
+---
+<script>
+    var categories = {};
+    
+    {% for category in site.categories %}
+        var posts = []
+        
+        {% for post in category[1] %}
+            p = {}
+            p["title"] = "{{ post.title }}";
+            p["url"] = "{{ post.url }}";
+            
+            posts.push(p);
+        {% endfor %}
+        
+        categories['{{ category[0] }}'] = posts;
+    {% endfor %}
+    
+    //var JSONcategories = JSON.parse('{{ site.categories }}'.replace(/=>/g, ":").replace(/\[<Post:\s/g, "[").replace(/>/g, "").replace(/<Post:\s/g, "").replace(/\/blog\/\w+(-\w+)*/g, "\"$&\""));
+    
+    function togglePosts(category) {
+        $(category.parentElement.parentElement.children[1]).toggle();
+    };
+    
+    function decodeURL() {
+        var requestedCategory = location.hash.replace("#", "");
+        
+        var categoryElement = $("#" + requestedCategory)[0];
+        
+        $(categoryElement.parentElement.parentElement.children[1]).toggle();
+    };
+</script>
+
+<ul class="category-list">
+    {% for category in site.categories %}
+        <li>
+            <h3>
+                <a href="#{{ category[0] }}" id="{{ category[0] }}" onclick="togglePosts(this)" class="category">{{ category[0] }}</a>
+            </h3>
+            
+            <ul style="display: none;">
+                {% for post in category[1] %}
+                    <li>
+                        <a href="{{ post.url }}">{{ post.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+</ul>
+
+<script>
+    decodeURL();
+</script>

@@ -36,9 +36,9 @@ layout: default
 <ul class="category-list">
     {% for category in site.categories %}
         <li>
-            <h3>
+            <h2>
                 <a href="#{{ category[0] }}" id="{{ category[0] }}" onclick="togglePosts(this)" class="category">{{ category[0] }}</a>
-            </h3>
+            </h2>
             
             <ul style="display: none;">
                 {% for post in category[1] %}

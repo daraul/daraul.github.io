@@ -1,0 +1,54 @@
+---
+layout: default
+---
+<script>
+    var tags = {};
+    
+    {% for tag in site.tags %}
+        var posts = []
+        
+        {% for post in tag[1] %}
+            p = {}
+            p["title"] = "{{ post.title }}";
+            p["url"] = "{{ post.url }}";
+            
+            posts.push(p);
+        {% endfor %}
+        
+        tags['{{ tag[0] }}'] = posts;
+    {% endfor %}
+    
+    function togglePosts(tag) {
+        $(tag.parentElement.parentElement.children[1]).toggle();
+    };
+    
+    function decodeURL() {
+        var requestedTag = location.hash.replace("#", "");
+        
+        var tagElement = $("#" + requestedTag)[0];
+        
+        $(tagElement.parentElement.parentElement.children[1]).toggle();
+    };
+</script>
+
+<ul class="tag-list">
+    {% for tag in site.tags %}
+        <li>
+            <h2>
+                <a href="#{{ tag[0] }}" id="{{ tag[0] }}" onclick="togglePosts(this)" class="tag">{{ tag[0] }}</a>
+            </h2>
+            
+            <ul style="display: none;">
+                {% for post in tag[1] %}
+                    <li>
+                        <a href="{{ post.url }}">{{ post.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+</ul>
+
+<script>
+    decodeURL();
+</script>

@@ -2,7 +2,8 @@
 layout: post
 title:  "Wordpress on Heroku"
 date:   2015-09-23 20:12:00 
-categories: wordpress heroku
+categories: [wordpress, heroku]
+tags: [heroku, wordpress, wordpress-on-heroku]
 ---
 
 Wordpress on Heroku is great, but difficult to setup. You will need to sign up for <a href="http://aws.amazon.com/" target="_blank">Amazon Web Services</a> and <a href="http://heroku.com/" target="_blank">Heroku</a>. You'll need to install the Heroku toolbelt on your machine using "wget -qO- <a href="https://toolbelt.heroku.com/install-ubuntu.sh">https://toolbelt.heroku.com/install-ubuntu.sh</a> | sh". I'll assume you're running Linux for this, but I'll see about a Windows tutorial as well later on. Setting up AWS is also not going to be covered right now in this tutorial.

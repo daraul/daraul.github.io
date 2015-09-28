@@ -51,7 +51,7 @@ layout: default
                 for(var j = 0; j < post.categories.length; j++){
                     var category = post.categories[j];
                     
-                    category_list.push("<a href='#" + category + "'>" + category + "</a>");
+                    category_list.push("<a href='#" + category + "' onclick='updateList(\"" + category + "\")'>" + category + "</a>");
                 };
                 
                 for(var j = 0; j < post.tags.length; j++){
@@ -60,7 +60,7 @@ layout: default
                     tag_list.push("<a href='../tags/#" + tag + "'>" + tag + "</a>");
                 };
                 
-                item_list += "<p><a href='#' onclick='updateList(\"\");'>< Back</a> | " + option + "</p>";
+                item_list += "<p><a href='#' onclick='updateList(\"\");'>< All categories</a> | " + option + "</p>";
                 item_list += "<li><h1><a class='" + post.title + "' href='" +  post.url + "'>" + post.title + "</a></h1>" + "<p>" + post.excerpt + "</p>";
                 
                 item_list += "<span class=\"post-meta\">" + post_date + " | <span class=\"category-list tag-list\">";

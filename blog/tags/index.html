@@ -8,11 +8,7 @@ layout: default
         var posts = []
         
         {% for post in tag[1] %}
-            p = {}
-            p["title"] = "{{ post.title }}";
-            p["url"] = "{{ post.url }}";
-            
-            posts.push(p);
+            posts.push({{ post | jsonify }});
         {% endfor %}
         
         tags['{{ tag[0] }}'] = posts;
@@ -23,32 +19,63 @@ layout: default
     };
     
     function decodeURL() {
-        var requestedTag = location.hash.replace("#", "");
+        var requestedtag = location.hash.replace("#", "");
         
-        var tagElement = $("#" + requestedTag)[0];
+        var tagElement = $("#" + requestedtag)[0];
         
         $(tagElement.parentElement.parentElement.children[1]).toggle();
     };
+    
+    function updateList(option) {
+        if (option == "") {
+            var tag_names = Object.keys(tags);
+            var item_list = "";
+            
+            for(var i = 0; i < tag_names.length; i++){
+                item_list += "<li><a href='#" + tag_names[i] + "' onclick='updateList(\"" + tag_names[i] + "\");'>" + tag_names[i] + "</a></li>"
+            };
+        } else {
+            var posts = tags[option];
+            var item_list = "";
+            
+            for(var i = 0; i < posts.length; i++){
+                var post = posts[i];
+                
+                var date = new Date(post.date);
+                var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                var post_date = months[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
+                
+                var category_list = [];
+                var tag_list = [];
+                
+                for(var j = 0; j < post.categories.length; j++){
+                    var category = post.categories[j];
+                    
+                    category_list.push("<a href='../categories/#" + category + "'>" + category + "</a>");
+                };
+                
+                for(var j = 0; j < post.tags.length; j++){
+                    var tag = post.tags[j];
+                    
+                    tag_list.push("<a href='#" + tag + "' onclick='updateList(\"" + tag + "\")'>" + tag + "</a>");
+                };
+                
+                item_list += "<p><a href='#' onclick='updateList(\"\");'>< All tags</a> | " + option + "</p>";
+                item_list += "<li><h1><a class='" + post.title + "' href='" +  post.url + "'>" + post.title + "</a></h1>" + "<p>" + post.excerpt + "</p>";
+                
+                item_list += "<span class=\"post-meta\">" + post_date + " | <span class=\"tag-list tag-list\">";
+                item_list += "Categories: " + category_list.join(", ") + " | Tags: " + tag_list.join(", ");
+                item_list += "</span></span>";
+            }
+        }
+        
+        $("#item-list").html(item_list);
+    };
 </script>
 
-<ul class="tag-list">
-    {% for tag in site.tags %}
-        <li>
-            <h2>
-                <a href="#{{ tag[0] }}" id="{{ tag[0] }}" onclick="togglePosts(this)" class="tag">{{ tag[0] }}</a>
-            </h2>
-            
-            <ul style="display: none;">
-                {% for post in tag[1] %}
-                    <li>
-                        <a href="{{ post.url }}">{{ post.title }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </li>
-    {% endfor %}
+<ul id="item-list">
 </ul>
 
 <script>
-    decodeURL();
+    updateList(location.hash.slice(1));
 </script>

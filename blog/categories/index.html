@@ -46,6 +46,7 @@ layout: default
                 var post_date = months[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
                 
                 var category_list = [];
+                var tag_list = [];
                 
                 for(var j = 0; j < post.categories.length; j++){
                     var category = post.categories[j];
@@ -53,10 +54,17 @@ layout: default
                     category_list.push("<a href='#" + category + "'>" + category + "</a>");
                 };
                 
-                item_list += "<p><a href='#' onclick='updateList(\"\");'>< Back</a></p>";
+                for(var j = 0; j < post.tags.length; j++){
+                    var tag = post.tags[j];
+                    
+                    tag_list.push("<a href='../tags/#" + tag + "'>" + tag + "</a>");
+                };
+                
+                item_list += "<p><a href='#' onclick='updateList(\"\");'>< Back</a> | " + option + "</p>";
                 item_list += "<li><h1><a class='" + post.title + "' href='" +  post.url + "'>" + post.title + "</a></h1>" + "<p>" + post.excerpt + "</p>";
                 
                 item_list += "<span class=\"post-meta\">" + post_date + " | <span class=\"category-list tag-list\">";
+                item_list += "Categories: " + category_list.join(", ") + " | Tags: " + tag_list.join(", ");
                 item_list += "</span></span>";
             }
         }

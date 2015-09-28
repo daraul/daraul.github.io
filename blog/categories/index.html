@@ -32,7 +32,7 @@ layout: default
             var item_list = "";
             
             for(var i = 0; i < category_names.length; i++){
-                item_list += "<li><a href='#" + category_names[i] + "' onclick='updateList(\"" + category_names[i] + "\");'>" + category_names[i] + "</a></li>"
+                item_list += "<li><a href='#" + category_names[i] + "' class=\"category\" onclick='updateList(\"" + category_names[i] + "\");'>" + category_names[i] + "</a></li>"
             };
         } else {
             var posts = categories[option];

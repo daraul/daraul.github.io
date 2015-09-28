@@ -30,7 +30,7 @@
     .page-link {
         color: $text-color;
         width: 80px;
-        font-family: "Open Sans", sans-serif;
+        font-family: $base-font-family;
         text-decoration: none;
         text-align: center;
         align-self: center;
@@ -191,6 +191,17 @@
         
         a {
             margin-left: 10px;
+        }
+    }
+    
+    #item-list {
+        li {
+            list-style-type: none;
+        }
+        
+        .tag, .category {
+            font-size: 24px;
+            font-family: $display-font-family;
         }
     }
 }

@@ -8,17 +8,11 @@ layout: default
         var posts = []
         
         {% for post in category[1] %}
-            p = {}
-            p["title"] = "{{ post.title }}";
-            p["url"] = "{{ post.url }}";
-            
-            posts.push(p);
+            posts.push({{ post | jsonify }});
         {% endfor %}
         
         categories['{{ category[0] }}'] = posts;
     {% endfor %}
-    
-    //var JSONcategories = JSON.parse('{{ site.categories }}'.replace(/=>/g, ":").replace(/\[<Post:\s/g, "[").replace(/>/g, "").replace(/<Post:\s/g, "").replace(/\/blog\/\w+(-\w+)*/g, "\"$&\""));
     
     function togglePosts(category) {
         $(category.parentElement.parentElement.children[1]).toggle();
@@ -31,26 +25,49 @@ layout: default
         
         $(categoryElement.parentElement.parentElement.children[1]).toggle();
     };
+    
+    function updateList(option) {
+        if (option == "") {
+            var category_names = Object.keys(categories);
+            var item_list = "";
+            
+            for(var i = 0; i < category_names.length; i++){
+                item_list += "<li><a href='#" + category_names[i] + "' onclick='updateList(\"" + category_names[i] + "\");'>" + category_names[i] + "</a></li>"
+            };
+        } else {
+            var posts = categories[option];
+            var item_list = "";
+            
+            for(var i = 0; i < posts.length; i++){
+                var post = posts[i];
+                
+                var date = new Date(post.date);
+                var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                var post_date = months[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
+                
+                var category_list = [];
+                
+                for(var j = 0; j < post.categories.length; j++){
+                    var category = post.categories[j];
+                    
+                    category_list.push("<a href='#" + category + "'>" + category + "</a>");
+                };
+                
+                item_list += "<p><a href='#' onclick='updateList(\"\");'>< Back</a></p>";
+                item_list += "<li><h1><a class='" + post.title + "' href='" +  post.url + "'>" + post.title + "</a></h1>" + "<p>" + post.excerpt + "</p>";
+                
+                item_list += "<span class=\"post-meta\">" + post_date + " | <span class=\"category-list tag-list\">";
+                item_list += "</span></span>";
+            }
+        }
+        
+        $("#item-list").html(item_list);
+    };
 </script>
 
-<ul class="category-list">
-    {% for category in site.categories %}
-        <li>
-            <h2>
-                <a href="#{{ category[0] }}" id="{{ category[0] }}" onclick="togglePosts(this)" class="category">{{ category[0] }}</a>
-            </h2>
-            
-            <ul style="display: none;">
-                {% for post in category[1] %}
-                    <li>
-                        <a href="{{ post.url }}">{{ post.title }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </li>
-    {% endfor %}
+<ul id="item-list">
 </ul>
 
 <script>
-    decodeURL();
+    updateList(location.hash.slice(1));
 </script>

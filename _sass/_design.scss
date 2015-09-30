@@ -1,0 +1,60 @@
+.site-header {
+    nav {
+        .page-link {
+            font-family: $header-font;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 20px;
+            color: black;
+        }
+        
+        .page-link:hover {
+            color: $highlight-color;
+            transition: $basic-transition;
+        }
+    }
+}
+
+.page#portfolio {
+    display: flex;
+    
+    .project-link {
+        width: 300px;
+        height: 300px;
+        position: relative;
+        background-color: #000;
+        overflow: hidden;
+        margin: 10px;
+        
+        .project-meta {
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            margin: 10px;
+            font-family: $body-font;
+            font-weight: 300;
+            font-style: italic;
+            color: #fff;
+            
+            .project-name {
+                font-weight: 700;
+                font-style: normal;
+            }
+        }
+        
+        .project-image {
+            height: 100%;
+            background-repeat: no-repeat;
+            background-position: 50%;
+            opacity: 0.5;
+            transition: $basic-transition;
+        }
+    }
+    
+    .project-link:hover {
+        .project-image {
+            opacity: 0.2;
+            transform: scale(1.05);
+        }
+    }
+}

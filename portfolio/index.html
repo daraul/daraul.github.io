@@ -23,9 +23,9 @@ identifier: portfolio
         for(var i = 0; i < data.length; i++) {
             var project = data[i];
             
-            content += "<a href='" + project.url + "' target='_blank'>";
-            content += "<p class=\"project_meta\">" + project.name + " | " + project.fields.join(", ") + "</p>";
-            content += "<img src='" + project['covers']['404'] + "' title=\"" + project.name + "\" /></a>";
+            content += "<a href='" + project.url + "' target='_blank' class=\"project-link\">";
+            content += "<span class=\"project-meta\"><span class=\"project-name\">" + project.name + "</span><br>" + project.fields.join(", ") + "</span>";
+            content += "<div class=\"project-image\" style=\"background-image: url(" + project['covers']['404'] + ")\"></div></a>";
         }
         
         portfolio_container.html(content);

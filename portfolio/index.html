@@ -2,17 +2,17 @@
 layout: page
 title: Portfolio
 permalink: /portfolio/
+identifier: portfolio
 ---
 
 <div class="container" id="portfolio-container">
 	<img id="loading-icon" src="/images/1-1.gif" alt="My portfolio should appear here..." />
 </div>
 
-<!-- Thanks to http://www.osd.net/blog/web-development/javascript/jsonp-example/ for helping me with this one -->
 <script type="text/javascript">
     function callBack(data) {
         window.stuff = data;
-        setContent(data.projects)
+        setContent(data.projects.reverse())
     }
     
     function setContent(data) {
@@ -23,7 +23,9 @@ permalink: /portfolio/
         for(var i = 0; i < data.length; i++) {
             var project = data[i];
             
-            content += "<a href='" + project.url + "' target='_blank'><img src='" + project['covers']['202'] + "' title=\"" + project.name + "\" /></a><br />";
+            content += "<a href='" + project.url + "' target='_blank'>";
+            content += "<p class=\"project_meta\">" + project.name + " | " + project.fields.join(", ") + "</p>";
+            content += "<img src='" + project['covers']['404'] + "' title=\"" + project.name + "\" /></a>";
         }
         
         portfolio_container.html(content);

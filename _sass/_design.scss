@@ -19,6 +19,8 @@ body {
     }
     
     .page {
+        transition: $basic-transition;
+        
         #loading-icon {
             margin: 0 auto;
             display: block;
@@ -82,5 +84,9 @@ body {
                 }
             }
         }
+    }
+    
+    .post {
+        transition: $basic-transition;
     }
 }

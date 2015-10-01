@@ -128,6 +128,18 @@ body {
             ul {
                 list-style-type: disc;
             }
+            
+            .code-snippet {
+                margin: 10px;
+                padding: 10px 25px;
+                background-color: #DCDCDC;
+            }
+            
+            .inline-snippet{
+                @extend .code-snippet;
+                padding: 0 10px;
+                margin: 0;
+            }
         }
     }
     

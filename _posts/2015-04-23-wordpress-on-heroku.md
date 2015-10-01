@@ -14,24 +14,20 @@ Wordpress on Heroku is great, but difficult to setup. You will need to sign up 
 	<li>Download <a href="https://wordpress.org/plugins/amazon-web-services/" target="_blank">Amazon Web Services</a> and <a href="https://wordpress.org/plugins/amazon-s3-and-cloudfront/" target="_blank">Amazon S3 and Cloudfront</a>.</li>
 	<li>Unzip both of Amazon Web Services and Amazon S3 and Cloudfront into the wp-content/plugins folder.</li>
 	<li>You should have been given access keys for your AWS user. Add them to your wp-config.php file like this:
-<ul>
-	<li>// AWS Access Keys //</li>
-	<li>define( 'AWS_ACCESS_KEY_ID', 'your_aws_access_key_id_here' );</li>
-	<li>define( 'AWS_SECRET_ACCESS_KEY', 'your_aws_secret_access_key_here' );</li>
-</ul>
-</li>
+    	<p class="code-snippet">// AWS Access Keys //<br>
+    	define( 'AWS_ACCESS_KEY_ID', 'your_aws_access_key_id_here' );<br>
+    	define( 'AWS_SECRET_ACCESS_KEY', 'your_aws_secret_access_key_here' );</p>
+    </li>
 	<li>Go <a href="https://api.wordpress.org/secret-key/1.1/salt/" target="_blank">here</a> and add your Unique Keys and Salts to your wp-config.php file like below:
-<ul>
-	<li>define('AUTH_KEY', 'put your unique phrase here');</li>
-	<li>define('SECURE_AUTH_KEY', 'put your unique phrase here');</li>
-	<li>define('LOGGED_IN_KEY', 'put your unique phrase here');</li>
-	<li>define('NONCE_KEY', 'put your unique phrase here');</li>
-	<li>define('AUTH_SALT', 'put your unique phrase here');</li>
-	<li>define('SECURE_AUTH_SALT', 'put your unique phrase here');</li>
-	<li>define('LOGGED_IN_SALT', 'put your unique phrase here');</li>
-	<li>define('NONCE_SALT', 'put your unique phrase here');</li>
-</ul>
-</li>
+    	<p class="code-snippet">define('AUTH_KEY', 'put your unique phrase here');<br>
+    	define('SECURE_AUTH_KEY', 'put your unique phrase here');<br>
+    	define('LOGGED_IN_KEY', 'put your unique phrase here');<br>
+    	define('NONCE_KEY', 'put your unique phrase here');<br>
+    	define('AUTH_SALT', 'put your unique phrase here');<br>
+    	define('SECURE_AUTH_SALT', 'put your unique phrase here');<br>
+    	define('LOGGED_IN_SALT', 'put your unique phrase here');<br>
+    	define('NONCE_SALT', 'put your unique phrase here');</p>
+    </li>
 	<li>Go to <a href="http://localhost/wordpress/" target="_blank">localhost/wordpress/</a> and run through the installation using the MySQL credentials you setup while setting up your LAMP stack. Check <a href="http://codex.wordpress.org/Installing_WordPress" target="_blank">here </a>if you're not sure what to do.</li>
 	<li>Go to your dashboard, and click on the plugins tab.</li>
 	<li>Activate both the Amazon Web Services and Amazon S3 and Cloudfront plugins. There should now be another tab at the bottom that says "AWS". If your AWS User is setup correctly then they should both work immediately and allow you to connect to a bucket.</li>
@@ -42,45 +38,37 @@ Wordpress on Heroku is great, but difficult to setup. You will need to sign up 
 	<li>Now type "heroku create". That'll create a new Heroku app from that directory.</li>
 	<li>Type "heroku addons:add cleardb". If all goes well then you're almost ready to push your installation to Heroku.</li>
 	<li>Copy the code below with the Unique Keys and Salts you got earlier:
-<ul>
-	<li>heroku config:set AUTH_KEY='put your unique phrase here'</li>
-	<li>SECURE_AUTH_KEY='put your unique phrase here'</li>
-	<li>LOGGED_IN_KEY='put your unique phrase here'</li>
-	<li>NONCE_KEY='put your unique phrase here'</li>
-	<li>AUTH_SALT='put your unique phrase here'</li>
-	<li>SECURE_AUTH_SALT='put your unique phrase here'</li>
-	<li>LOGGED_IN_SALT='put your unique phrase here'</li>
-	<li>NONCE_SALT='put your unique phrase here'</li>
-</ul>
-</li>
+    	<p class="code-snippet">heroku config:set AUTH_KEY='put your unique phrase here'<br>
+    	SECURE_AUTH_KEY='put your unique phrase here'<br>
+    	LOGGED_IN_KEY='put your unique phrase here'<br>
+    	NONCE_KEY='put your unique phrase here'<br>
+    	AUTH_SALT='put your unique phrase here'<br>
+    	SECURE_AUTH_SALT='put your unique phrase here'<br>
+    	LOGGED_IN_SALT='put your unique phrase here'<br>
+    	NONCE_SALT='put your unique phrase here'</p>
+    </li>
 	<li>Again in the terminal type "git checkout -b production". You'll store your production environment variables here.</li>
 	<li>Add this line to your wp-config.php file:
-<ul>
-	<li>$db = parse_url($_ENV["CLEARDB_DATABASE_URL"]);</li>
-</ul>
-</li>
+	    <p class="code-snippet">$db = parse_url($_ENV["CLEARDB_DATABASE_URL"]);</p>
+    </li>
 	<li>Change your database information in wp-config.php to the code below:
-<ul>
-	<li>define('DB_NAME', trim($db["path"],"/"));</li>
-	<li>define('DB_USER', $db["user"]);</li>
-	<li>define('DB_PASSWORD', $db["pass"]);</li>
-	<li>define('DB_HOST', $db["host"]);</li>
-</ul>
-</li>
+    	<p class="code-snippet">define('DB_NAME', trim($db["path"],"/"));<br>
+    	define('DB_USER', $db["user"]);<br>
+    	define('DB_PASSWORD', $db["pass"]);<br>
+    	define('DB_HOST', $db["host"]);</p>
+    </li>
 	<li>Change your Unthentication Unique Keys and Salts to the below:
-<ul>
-	<li>define('AUTH_KEY', getenv('AUTH_KEY'));</li>
-	<li>define('SECURE_AUTH_KEY', getenv('SECURE_AUTH_KEY'));</li>
-	<li>define('LOGGED_IN_KEY', getenv('LOGGED_IN_KEY'));</li>
-	<li>define('NONCE_KEY', getenv('NONCE_KEY'));</li>
-	<li>define('AUTH_SALT', getenv('AUTH_SALT'));</li>
-	<li>define('SECURE_AUTH_SALT', getenv('SECURE_AUTH_SALT'));</li>
-	<li>define('LOGGED_IN_SALT', getenv('LOGGED_IN_SALT'));</li>
-	<li>define('NONCE_SALT', getenv('NONCE_SALT'));</li>
-	<li>define('AWS_ACCESS_KEY_ID', getenv('AWS_ACCESS_KEY_ID'));</li>
-	<li>define('AWS_SECRET_ACCESS_KEY', getenv('AWS_SECRET_ACCESS_KEY'));</li>
-</ul>
-</li>
+    	<p class="code-snippet">define('AUTH_KEY', getenv('AUTH_KEY'));<br>
+    	define('SECURE_AUTH_KEY', getenv('SECURE_AUTH_KEY'));<br>
+    	define('LOGGED_IN_KEY', getenv('LOGGED_IN_KEY'));<br>
+    	define('NONCE_KEY', getenv('NONCE_KEY'));<br>
+    	define('AUTH_SALT', getenv('AUTH_SALT'));<br>
+    	define('SECURE_AUTH_SALT', getenv('SECURE_AUTH_SALT'));<br>
+    	define('LOGGED_IN_SALT', getenv('LOGGED_IN_SALT'));<br>
+    	define('NONCE_SALT', getenv('NONCE_SALT'));<br>
+    	define('AWS_ACCESS_KEY_ID', getenv('AWS_ACCESS_KEY_ID'));<br>
+    	define('AWS_SECRET_ACCESS_KEY', getenv('AWS_SECRET_ACCESS_KEY'));</p>
+    </li>
 	<li>Now you're all set. Type "git push heroku production:master" and let it finish. When that's done you can go to "http://yourwordpressapp.heroku.com" and complete your remote installation.
 <ol>
 	<li>In order to check out your remote installation simply switch back to the master branch with "git checkout master"</li>
@@ -97,7 +85,7 @@ If you need to update Wordpress (mine updated twice while I was working on this
 	<li>Commit the changes made by the update.</li>
 	<li>Switch to the production branch and merge with master by running "git merge master". This shouldn't create any conflicts (it didn't with me).</li>
 	<li>The wp-config file should be untouched, but check it just in case. If it doesn't have your production settings, simply edit the file again, and commit changes.</li>
-	<li>Now run "git push heroku production:master" again, wait and your remote installation will be updated.
+	<li>Now run <span class="inline-snippet">git push heroku production:master</span> again, wait and your remote installation will be updated.
 <ul>
 	<li>Remember to switch back to the master branch to get your local installation working again.</li>
 </ul>

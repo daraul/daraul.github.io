@@ -3,7 +3,7 @@
     margin: 0 auto 40px auto;
     justify-content: space-between;
     align-items: center;
-    max-width: $portrait-site-width;
+    max-width: $site-width;
     height: 50px;
     
     #site-logo {
@@ -28,7 +28,7 @@
 }
 
 .page {
-    max-width: $portrait-site-width;
+    max-width: $site-width;
     margin: 0 auto;
 }
 
@@ -40,8 +40,8 @@
     }
 }
 
-.post {
-    max-width: $portrait-site-width;
+#post {
+    max-width: $site-width;
     margin: 0 auto;
     
     #post-title {

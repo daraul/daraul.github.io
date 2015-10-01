@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<div class="post">
+<div id="post">
     <header id="post-header">
         <h1 id="post-title">{{ page.title }}</h1>
         <p id="post-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %} | <span id="category-list"></span> | <span id="tag-list"></span></p>
@@ -17,11 +17,11 @@ layout: default
     var tags = [];
     
     {% for category in page.categories %}
-        categories.push("<a href='../categories/#{{ category }}'>{{ category }}</a>");
+        categories.push("<a href='../categories/#{{ category }}' class='post-category'>{{ category }}</a>");
     {% endfor %}
     
     {% for tag in page.tags %}
-        tags.push("<a href='../tags/#{{ tag }}'>{{ tag }}</a>")
+        tags.push("<a href='../tags/#{{ tag }}' class='post-tag'>{{ tag }}</a>")
     {% endfor %}
     
     $("#category-list").html("Categories: " + categories.join(", "));

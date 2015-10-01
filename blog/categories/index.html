@@ -30,7 +30,7 @@ identifier: categories
     function updateList(option) {
         if (option == "") {
             var category_names = Object.keys(categories);
-            var item_list = "";
+            var item_list = "<p id=\"all-categories\">All categories</p>";
             
             for(var i = 0; i < category_names.length; i++){
                 item_list += "<li><a href='#" + category_names[i] + "' class=\"category\" onclick='updateList(\"" + category_names[i] + "\");'>" + category_names[i] + "</a></li>"

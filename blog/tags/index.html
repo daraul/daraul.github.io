@@ -30,7 +30,7 @@ identifier: tags
     function updateList(option) {
         if (option == "") {
             var tag_names = Object.keys(tags);
-            var item_list = "";
+            var item_list = "<p id=\"all-tags\">All tags</p>";
             
             for(var i = 0; i < tag_names.length; i++){
                 item_list += "<li><a href='#" + tag_names[i] + "' class=\"tag\" onclick='updateList(\"" + tag_names[i] + "\");'>" + tag_names[i] + "</a></li>"

@@ -31,11 +31,24 @@ body {
         #post-list, #item-list {
             list-style-type: none;
             
+            .tag, .category {
+                font-family: $header-font;
+                font-size: 20px;
+                color: #000;
+                text-decoration: none;
+                transition: $basic-transition;
+            }
+            
+            .tag:hover, .category:hover {
+                color: $highlight-color;
+            }
+            
             #all-categories, #all-tags {
                 font-family: $body-font;
                 text-decoration: none;
                 font-size: 12px;
                 color: #000;
+                font-weight: 300;
                 
                 #return-link {
                     text-decoration: none;

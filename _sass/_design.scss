@@ -94,6 +94,11 @@ body {
         #post-header {
             width: 100%;
             display: block;
+            background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc1JyBoZWlnaHQ9JzUnPgogIDxyZWN0IHdpZHRoPSc1JyBoZWlnaHQ9JzUnIGZpbGw9J3doaXRlJy8+CiAgPHBhdGggZD0nTTAgNUw1IDBaTTYgNEw0IDZaTS0xIDFMMSAtMVonIHN0cm9rZT0nIzg4OCcgc3Ryb2tlLXdpZHRoPScxJy8+Cjwvc3ZnPg==);
+            background-repeat-y: no-repeat;
+            background-position-y: 100%;
+            padding: 0 0 10px 0;
+            background-origin: content-box;
             
             #post-title {
                 font-family: $header-font;
@@ -146,11 +151,36 @@ body {
     
     .page#projects {
         width: 100%;
-        display: flex;
         
         #projects-container {
             width: 100%;
-            display: flex;
+            
+            .project-link {
+                font-family: $header-font;
+                font-size: 20px;
+                font-weight: 700;
+                color: #000;
+                text-decoration: none;
+                transition: $basic-transition;
+                
+                .project-link-icon {
+                    margin: 0 0 0 10px;
+                    fill: #CCC;
+                    display: none;
+                }
+            }
+            
+            .project-link:hover {
+                color: $highlight-color;
+                
+                .project-link-icon {
+                    display: inline;
+                }
+            }
+            
+            .project-description {
+                font-family: $body-font;
+            }
         }
     }
     

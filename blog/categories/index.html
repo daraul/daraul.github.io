@@ -61,9 +61,11 @@ identifier: categories
                     tag_list.push("<a href=\"../tags/#" + tag + "\" class=\"post-tag\">" + tag + "</a>");
                 };
                 
-                item_list += "<p><a href='#' onclick='updateList(\"\");'>< All categories</a> | " + option + "</p>";
+                item_list += "<p id=\"all-categories\"><a href='#' id=\"return-link\" onclick='updateList(\"\");'>< All categories</a> | " + option + "</p>";
+                
                 item_list += "<li><article class=\"post\"><h1><a class=\"post-link\" href='" +  post.url + "'>" + post.title + "</a></h1>";
                 item_list += "<p class=\"post-excerpt\">" + post.excerpt + "</p>";
+                
                 item_list += "<span class=\"post-meta\">" + post_date + " | <span class=\"category-list tag-list\">";
                 item_list += "Categories: " + category_list.join(", ") + " | Tags: " + tag_list.join(", ");
                 item_list += "</span></span></article></li>";

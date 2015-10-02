@@ -9,8 +9,9 @@
 $header-font: 'Rufina', serif;
 $body-font: 'Open Sans', sans-serif;
 
-// Measurements
-$site-width: 900px;
+// Breakpoints
+$site-break-1: 900px;
+$site-break-2: 600px;
 
 // Colors 
 $highlight-color: #ff0000;
@@ -33,6 +34,14 @@ $basic-transition: all .45s ease;
     
     .post-category:hover, .post-tag:hover {
         color: $highlight-color;
+    }
+}
+
+@mixin breakpoints() {
+    @media screen {
+        @media (min-width: $site-break-1) {
+            max-width: $site-break-1;
+        }
     }
 }
 

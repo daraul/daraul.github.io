@@ -3,32 +3,43 @@
     margin: 40px auto;
     justify-content: space-between;
     align-items: center;
-    max-width: $site-width;
-    height: 50px;
+    @include breakpoints();
     
     #site-logo {
         margin: 10px;
         cursor: pointer;
         width: 50px;
         height: 50px;
+        
+        @media (max-width: 900px) {
+            display: none;
+        }
     }
     
     .site-nav {
         display: flex;
         width: 100%;
-        height: 100px;
-        justify-content: space-between;
+        justify-content: center;
+        flex-wrap: wrap;
         align-items: center;
         
         .page-link {
             margin: 10px;
             padding: 25px;
+            
+            @media (max-width: 846px) {
+                padding: 15px;
+                
+                @media (max-width: 727px) {
+                    padding: 0;
+                }
+            }
         }
     }
 }
 
 .page {
-    max-width: $site-width;
+    max-width: $site-break-1;
     margin: 0 auto;
 }
 
@@ -40,8 +51,14 @@
     }
 }
 
+.page#blog {
+    #post-list {
+        padding: 0;
+    }
+}
+
 #post {
-    max-width: $site-width;
+    max-width: $site-break-1;
     margin: 0 auto;
     
     #post-title {
@@ -50,5 +67,15 @@
     
     #post-meta {
         text-align: center;
+        
+        @media (max-width: $site-break-2) {
+            #category-list, #tag-list {
+                display: block;
+            }
+            
+            .separator {
+                display: none;
+            }
+        }
     }
 }

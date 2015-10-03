@@ -20,6 +20,20 @@ $highlight-color: #ff0000;
 $basic-transition: all .45s ease;
 
 // Mixins 
+@mixin breakpoints() {
+    @media screen {
+        @media (min-width: $site-break-1) {
+            max-width: $site-break-1;
+        }
+    }
+}
+
+@mixin link-settings() {
+    text-decoration: none;
+    color: #700;
+    transition: $basic-transition;
+}
+
 @mixin post-meta() {
     font-family: $body-font;
     font-size: 12px;
@@ -34,14 +48,6 @@ $basic-transition: all .45s ease;
     
     .post-category:hover, .post-tag:hover {
         color: $highlight-color;
-    }
-}
-
-@mixin breakpoints() {
-    @media screen {
-        @media (min-width: $site-break-1) {
-            max-width: $site-break-1;
-        }
     }
 }
 

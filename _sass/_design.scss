@@ -26,6 +26,37 @@ body {
     .page {
         transition: $basic-transition;
         
+        h1, h2, h3, h4, h5 {
+            font-family: $header-font;
+            font-weight: 700;
+        }
+        
+        p {
+            font-family: $body-font;
+        }
+        
+        a {
+            @include link-settings();
+        }
+        
+        a:hover {
+            color: $highlight-color;
+        }
+        
+        ul, ol {
+            li {
+                font-family: $body-font;
+            }
+        }
+        
+        table {
+            tr {
+                td {
+                    font-family: $body-font;
+                }
+            }
+        }
+        
         #loading-icon {
             margin: 0 auto;
             display: block;
@@ -117,9 +148,7 @@ body {
             color: #000;
             
             a {
-                text-decoration: none;
-                color: #700;
-                transition: $basic-transition;
+                @include link-settings();
             }
             
             a:hover {

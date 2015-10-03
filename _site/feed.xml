@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Daraul</title>
+    <description>Daraul can build you your website, setup your hosting and even your web application.
+</description>
+    <link>http://daraul.com/</link>
+    <atom:link href="http://daraul.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 03 Oct 2015 16:54:44 +0000</pubDate>
+    <lastBuildDate>Sat, 03 Oct 2015 16:54:44 +0000</lastBuildDate>
+    <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>Wordpress on Heroku</title>
+        <description>&lt;p&gt;Wordpress on Heroku is great, but difficult to setup. You will need to sign up for &lt;a href=&quot;http://aws.amazon.com/&quot; target=&quot;_blank&quot;&gt;Amazon Web Services&lt;/a&gt; and &lt;a href=&quot;http://heroku.com/&quot; target=&quot;_blank&quot;&gt;Heroku&lt;/a&gt;. You’ll need to install the Heroku toolbelt on your machine using “wget -qO- &lt;a href=&quot;https://toolbelt.heroku.com/install-ubuntu.sh&quot;&gt;https://toolbelt.heroku.com/install-ubuntu.sh&lt;/a&gt; | sh”. I’ll assume you’re running Linux for this, but I’ll see about a Windows tutorial as well later on. Setting up AWS is also not going to be covered right now in this tutorial.&lt;/p&gt;
+&lt;ol&gt;
+	&lt;li&gt;The first thing to do is &lt;a href=&quot;http://www.linux.com/learn/tutorials/288158-easy-lamp-server-installation&quot; target=&quot;_blank&quot;&gt;setup LAMP on your Linux machine&lt;/a&gt;.&lt;/li&gt;
+	&lt;li&gt;Next get the &lt;a href=&quot;https://wordpress.org/download/&quot; target=&quot;_blank&quot;&gt;latest version of Wordpress&lt;/a&gt;. Download it and unzip the file into your &quot;/var/www/html/&quot; folder.&lt;/li&gt;
+	&lt;li&gt;Download &lt;a href=&quot;https://wordpress.org/plugins/amazon-web-services/&quot; target=&quot;_blank&quot;&gt;Amazon Web Services&lt;/a&gt; and &lt;a href=&quot;https://wordpress.org/plugins/amazon-s3-and-cloudfront/&quot; target=&quot;_blank&quot;&gt;Amazon S3 and Cloudfront&lt;/a&gt;.&lt;/li&gt;
+	&lt;li&gt;Unzip both of Amazon Web Services and Amazon S3 and Cloudfront into the wp-content/plugins folder.&lt;/li&gt;
+	&lt;li&gt;You should have been given access keys for your AWS user. Add them to your wp-config.php file like this:
+    	&lt;p class=&quot;code-snippet&quot;&gt;// AWS Access Keys //&lt;br /&gt;
+    	define( &#39;AWS_ACCESS_KEY_ID&#39;, &#39;your_aws_access_key_id_here&#39; );&lt;br /&gt;
+    	define( &#39;AWS_SECRET_ACCESS_KEY&#39;, &#39;your_aws_secret_access_key_here&#39; );&lt;/p&gt;
+    &lt;/li&gt;
+	&lt;li&gt;Go &lt;a href=&quot;https://api.wordpress.org/secret-key/1.1/salt/&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt; and add your Unique Keys and Salts to your wp-config.php file like below:
+    	&lt;p class=&quot;code-snippet&quot;&gt;define(&#39;AUTH_KEY&#39;, &#39;put your unique phrase here&#39;);&lt;br /&gt;
+    	define(&#39;SECURE_AUTH_KEY&#39;, &#39;put your unique phrase here&#39;);&lt;br /&gt;
+    	define(&#39;LOGGED_IN_KEY&#39;, &#39;put your unique phrase here&#39;);&lt;br /&gt;
+    	define(&#39;NONCE_KEY&#39;, &#39;put your unique phrase here&#39;);&lt;br /&gt;
+    	define(&#39;AUTH_SALT&#39;, &#39;put your unique phrase here&#39;);&lt;br /&gt;
+    	define(&#39;SECURE_AUTH_SALT&#39;, &#39;put your unique phrase here&#39;);&lt;br /&gt;
+    	define(&#39;LOGGED_IN_SALT&#39;, &#39;put your unique phrase here&#39;);&lt;br /&gt;
+    	define(&#39;NONCE_SALT&#39;, &#39;put your unique phrase here&#39;);&lt;/p&gt;
+    &lt;/li&gt;
+	&lt;li&gt;Go to &lt;a href=&quot;http://localhost/wordpress/&quot; target=&quot;_blank&quot;&gt;localhost/wordpress/&lt;/a&gt; and run through the installation using the MySQL credentials you setup while setting up your LAMP stack. Check &lt;a href=&quot;http://codex.wordpress.org/Installing_WordPress&quot; target=&quot;_blank&quot;&gt;here &lt;/a&gt;if you&#39;re not sure what to do.&lt;/li&gt;
+	&lt;li&gt;Go to your dashboard, and click on the plugins tab.&lt;/li&gt;
+	&lt;li&gt;Activate both the Amazon Web Services and Amazon S3 and Cloudfront plugins. There should now be another tab at the bottom that says &quot;AWS&quot;. If your AWS User is setup correctly then they should both work immediately and allow you to connect to a bucket.&lt;/li&gt;
+	&lt;li&gt;Go into your wordpress folder and open a terminal session there.&lt;/li&gt;
+	&lt;li&gt;In your terminal type &lt;span class=&quot;inline-snippet&quot;&gt;$ git init&lt;/span&gt; That&#39;ll initialize the whole thing as a git repository.&lt;/li&gt;
+	&lt;li&gt;In your terminal type &lt;span class=&quot;inline-snippet&quot;&gt;git add .&lt;/span&gt; to get all the WP files ready to be committed. This will take a second or two.&lt;/li&gt;
+	&lt;li&gt;Now type &lt;span class=&quot;inline-snippet&quot;&gt;git commit -m &#39;Add your own commit message here&#39;&lt;/span&gt; Wait for the wall of text to stop running.&lt;/li&gt;
+	&lt;li&gt;Now type &lt;span class=&quot;inline-snippet&quot;&gt;heroku create&lt;/span&gt; That&#39;ll create a new Heroku app from that directory.&lt;/li&gt;
+	&lt;li&gt;Type &lt;span class=&quot;inline-snippet&quot;&gt;heroku addons:add cleardb&lt;/span&gt; If all goes well then you&#39;re almost ready to push your installation to Heroku.&lt;/li&gt;
+	&lt;li&gt;Copy the code below with the Unique Keys and Salts you got earlier:
+    	&lt;p class=&quot;code-snippet&quot;&gt;heroku config:set AUTH_KEY=&#39;put your unique phrase here&#39;&lt;br /&gt;
+    	SECURE_AUTH_KEY=&#39;put your unique phrase here&#39;&lt;br /&gt;
+    	LOGGED_IN_KEY=&#39;put your unique phrase here&#39;&lt;br /&gt;
+    	NONCE_KEY=&#39;put your unique phrase here&#39;&lt;br /&gt;
+    	AUTH_SALT=&#39;put your unique phrase here&#39;&lt;br /&gt;
+    	SECURE_AUTH_SALT=&#39;put your unique phrase here&#39;&lt;br /&gt;
+    	LOGGED_IN_SALT=&#39;put your unique phrase here&#39;&lt;br /&gt;
+    	NONCE_SALT=&#39;put your unique phrase here&#39;&lt;/p&gt;
+    &lt;/li&gt;
+	&lt;li&gt;Again in the terminal type &lt;span class=&quot;inline-snippet&quot;&gt;git checkout -b production&lt;/span&gt; You&#39;ll store your production environment variables here.&lt;/li&gt;
+	&lt;li&gt;Add this line to your wp-config.php file:
+	    &lt;p class=&quot;code-snippet&quot;&gt;$db = parse_url($_ENV[&quot;CLEARDB_DATABASE_URL&quot;]);&lt;/p&gt;
+    &lt;/li&gt;
+	&lt;li&gt;Change your database information in wp-config.php to the code below:
+    	&lt;p class=&quot;code-snippet&quot;&gt;define(&#39;DB_NAME&#39;, trim($db[&quot;path&quot;],&quot;/&quot;));&lt;br /&gt;
+    	define(&#39;DB_USER&#39;, $db[&quot;user&quot;]);&lt;br /&gt;
+    	define(&#39;DB_PASSWORD&#39;, $db[&quot;pass&quot;]);&lt;br /&gt;
+    	define(&#39;DB_HOST&#39;, $db[&quot;host&quot;]);&lt;/p&gt;
+    &lt;/li&gt;
+	&lt;li&gt;Change your Unthentication Unique Keys and Salts to the below:
+    	&lt;p class=&quot;code-snippet&quot;&gt;define(&#39;AUTH_KEY&#39;, getenv(&#39;AUTH_KEY&#39;));&lt;br /&gt;
+    	define(&#39;SECURE_AUTH_KEY&#39;, getenv(&#39;SECURE_AUTH_KEY&#39;));&lt;br /&gt;
+    	define(&#39;LOGGED_IN_KEY&#39;, getenv(&#39;LOGGED_IN_KEY&#39;));&lt;br /&gt;
+    	define(&#39;NONCE_KEY&#39;, getenv(&#39;NONCE_KEY&#39;));&lt;br /&gt;
+    	define(&#39;AUTH_SALT&#39;, getenv(&#39;AUTH_SALT&#39;));&lt;br /&gt;
+    	define(&#39;SECURE_AUTH_SALT&#39;, getenv(&#39;SECURE_AUTH_SALT&#39;));&lt;br /&gt;
+    	define(&#39;LOGGED_IN_SALT&#39;, getenv(&#39;LOGGED_IN_SALT&#39;));&lt;br /&gt;
+    	define(&#39;NONCE_SALT&#39;, getenv(&#39;NONCE_SALT&#39;));&lt;br /&gt;
+    	define(&#39;AWS_ACCESS_KEY_ID&#39;, getenv(&#39;AWS_ACCESS_KEY_ID&#39;));&lt;br /&gt;
+    	define(&#39;AWS_SECRET_ACCESS_KEY&#39;, getenv(&#39;AWS_SECRET_ACCESS_KEY&#39;));&lt;/p&gt;
+    &lt;/li&gt;
+	&lt;li&gt;Now you&#39;re all set. Type &lt;span class=&quot;inline-snippet&quot;&gt;git push heroku production:master&lt;/span&gt; and let it finish. When that&#39;s done you can go to &quot;http://yourwordpressapp.heroku.com&quot; and complete your remote installation.
+&lt;ol&gt;
+	&lt;li&gt;In order to check out your remote installation simply switch back to the master branch with &lt;span class=&quot;inline-snippet&quot;&gt;git checkout master&lt;/span&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Updating Wordpress&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;If you need to update Wordpress (mine updated twice while I was working on this) you’ll need to take a few steps:&lt;/p&gt;
+&lt;ol&gt;
+	&lt;li&gt;In a terminal in the html folder run &lt;span class=&quot;inline-snippet&quot;&gt;sudo chown -R www-data:www-data wordpress/&lt;/span&gt; That&#39;ll let you update wordpress locally through the app.&lt;/li&gt;
+	&lt;li&gt;Make sure you&#39;re on the master branch and update WP via the dashboard.&lt;/li&gt;
+	&lt;li&gt;Once Wordpress is finished updating run &lt;span class=&quot;inline-snippet&quot;&gt;sudo chown -R your_user:your_user wordpress/&lt;/span&gt; Now you&#39;ll be able to edit the folder yourself again.&lt;/li&gt;
+	&lt;li&gt;Commit the changes made by the update.&lt;/li&gt;
+	&lt;li&gt;Switch to the production branch and merge with master by running &lt;span class=&quot;inline-snippet&quot;&gt;git merge master&lt;/span&gt; This shouldn&#39;t create any conflicts (it didn&#39;t with me).&lt;/li&gt;
+	&lt;li&gt;The wp-config file should be untouched, but check it just in case. If it doesn&#39;t have your production settings, simply edit the file again, and commit changes.&lt;/li&gt;
+	&lt;li&gt;Now run &lt;span class=&quot;inline-snippet&quot;&gt;git push heroku production:master&lt;/span&gt; again, wait and your remote installation will be updated.
+&lt;ul&gt;
+	&lt;li&gt;Remember to switch back to the master branch to get your local installation working again.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Adding/updating themes and plugins&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Adding/updating themes and plugins is easy.&lt;/p&gt;
+&lt;ol&gt;
+	&lt;li&gt;Download the theme or plugin.&lt;/li&gt;
+	&lt;li&gt;Make sure you&#39;re in your master branch. Unzip the theme/folder into it&#39;s respective folder.&lt;/li&gt;
+	&lt;li&gt;In your local installation active the theme or plugin.&lt;/li&gt;
+	&lt;li&gt;Commit the changes, then switch to production.&lt;/li&gt;
+	&lt;li&gt;Run &lt;span class=&quot;inline-snippet&quot;&gt;git merge master&lt;/span&gt; This should not create any conflicts if the plugin/theme is new.
+&lt;ul&gt;
+	&lt;li&gt;If you&#39;re updating a conflict might be caused. If so, then in the terminal type &lt;span class=&quot;inline-snippet&quot;&gt;git reset --hard&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;Delete the older plugin/theme and replace with the new one, then merge again.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+	&lt;li&gt;The wp-config file should be untouched, but check it just in case. If it doesn&#39;t have your production settings, simply edit the file again, and commit changes.&lt;/li&gt;
+	&lt;li&gt;Now run &lt;span class=&quot;inline-snippet&quot;&gt;git push heroku production:master&lt;/span&gt; again, wait and your remote installation should now have the plugin/theme.
+&lt;ul&gt;
+	&lt;li&gt;Go to &quot;http://yourwordpressapp.heroku.com/wp-admin&quot; and Wordpress might ask you to update the database. Simply go ahead and everything should work fine.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Wed, 23 Sep 2015 20:12:00 +0000</pubDate>
+        <link>http://daraul.com/blog/wordpress-on-heroku/</link>
+        <guid isPermaLink="true">http://daraul.com/blog/wordpress-on-heroku/</guid>
+        
+        <category>heroku</category>
+        
+        <category>wordpress</category>
+        
+        <category>wordpress-on-heroku</category>
+        
+        <category>blogging</category>
+        
+        
+        <category>tutorials</category>
+        
+      </item>
+    
+  </channel>
+</rss>

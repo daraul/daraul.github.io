@@ -63,6 +63,14 @@ body {
         }
     }
     
+    .page#home {
+        #plan-disclaimer {
+            font-weight: 300;
+            font-size: 0.75em;
+            font-style: italic;
+        }
+    }
+    
     .page#blog, .page#categories, .page#tags {
         #post-list, #item-list {
             list-style-type: none;

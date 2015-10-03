@@ -37,7 +37,7 @@ identifier: categories
             };
         } else {
             var posts = categories[option];
-            var item_list = "";
+            var item_list = "<p id=\"all-categories\"><a href='#' id=\"return-link\" onclick='updateList(\"\");'>< All categories</a> | " + option + "</p>";
             
             for(var i = 0; i < posts.length; i++){
                 var post = posts[i];
@@ -60,8 +60,6 @@ identifier: categories
                     
                     tag_list.push("<a href=\"../tags/#" + tag + "\" class=\"post-tag\">" + tag + "</a>");
                 };
-                
-                item_list += "<p id=\"all-categories\"><a href='#' id=\"return-link\" onclick='updateList(\"\");'>< All categories</a> | " + option + "</p>";
                 
                 item_list += "<li><article class=\"post\"><h1><a class=\"post-link\" href='" +  post.url + "'>" + post.title + "</a></h1>";
                 item_list += "<p class=\"post-excerpt\">" + post.excerpt + "</p>";

@@ -3,7 +3,7 @@ layout: post
 title:  "Wordpress on Heroku"
 date:   2015-09-23 20:12:00 
 categories: [tutorials]
-tags: [heroku, wordpress, wordpress-on-heroku, blogging]
+tags: [heroku, wordpress, wordpress on heroku, blogging]
 excerpt: "Wordpress on Heroku is great, but difficult to setup..."
 ---
 

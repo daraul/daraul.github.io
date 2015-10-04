@@ -2,7 +2,7 @@
 layout: post
 title:  "Jekyll is awesome"
 categories: [opinion pieces]
-tags: [jekyll, blogging, static-development]
+tags: [jekyll, blogging, static development]
 excerpt: "Everything should be as simple as jekyll makes it"
 ---
 

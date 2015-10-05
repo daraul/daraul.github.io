@@ -3,6 +3,7 @@ layout: page
 title: Projects
 permalink: /projects/
 identifier: projects
+menu_location: 4
 ---
 <div class="container" id="projects-container">
 	<img id="loading-icon" src="/images/1-1.gif" alt="My portfolio should appear here..." />
@@ -11,7 +12,6 @@ identifier: projects
 <!-- Thanks to http://www.osd.net/blog/web-development/javascript/jsonp-example/ for helping me with this one -->
 <script type="text/javascript">
     function callBack(data) {
-        window.stuff = data;
         setContent(data.data)
     }
     

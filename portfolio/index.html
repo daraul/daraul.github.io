@@ -3,6 +3,7 @@ layout: page
 title: Portfolio
 permalink: /portfolio/
 identifier: portfolio
+menu_location: 3
 ---
 
 <div class="container" id="portfolio-container">
@@ -11,7 +12,6 @@ identifier: portfolio
 
 <script type="text/javascript">
     function callBack(data) {
-        window.stuff = data;
         setContent(data.projects.reverse())
     }
     

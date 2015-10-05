@@ -19,6 +19,7 @@ body {
             
             .page-link:hover {
                 color: $highlight-color;
+                fill: $highlight-color;
             }
         }
     }
@@ -272,5 +273,30 @@ body {
     
     .post {
         transition: $basic-transition;
+    }
+    
+    footer {
+        border-top: 1px dotted #333;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        
+        a {
+            @include link-settings;
+            margin: 5px;
+            
+            svg {
+                fill: #000;
+                transition: $basic-transition;
+            }
+        }
+        
+        a:hover {
+            color: $highlight-color;
+            
+            svg {
+                fill: $highlight-color
+            }
+        }
     }
 }

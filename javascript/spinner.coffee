@@ -1,4 +1,4 @@
 ---
 ---
 $(document).on 'page:fetch', ->
-  $(".page, .post").css("opacity", "0");
+  $(".page, .post, #feature-image-container").css("opacity", "0");

@@ -1,6 +1,12 @@
 ---
 layout: default
 ---
+{% if page.feature_image %}
+    <div id="feature-image-container">
+        <img id="feature-image" src="{{ page.feature_image }}" alt="Feature image" />
+    </div>
+{% endif %}
+
 <div class="page"  id="{{ page.identifier }}">
     {% if page.header %}
         <header class="page-header">

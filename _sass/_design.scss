@@ -29,9 +29,18 @@ body {
         height: 400px;
         overflow: hidden;
         transition: $basic-transition;
+        background-size: cover;
         
-        #feature-image {
+        #feature-text {
+            display: flex;
             width: 100%;
+            height: 100%;
+            margin: 0;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-family: $header-font;
+            font-size: 7em;
         }
     }
     

@@ -2,8 +2,10 @@
 layout: default
 ---
 {% if page.feature_image %}
-    <div id="feature-image-container">
-        <img id="feature-image" src="{{ page.feature_image }}" alt="Feature image" />
+    <div id="feature-image-container" style="background-image: url({{ page.feature_image }})">
+        {% if page.feature_text %}
+            <p id="feature-text">{{ page.feature_text }}</p>
+        {% endif %}
     </div>
 {% endif %}
 

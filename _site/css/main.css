@@ -1,0 +1,246 @@
+.site-header {
+  display: flex;
+  margin: 40px auto 10px auto;
+  justify-content: space-between;
+  align-items: center; }
+@media screen and (min-width: 900px) {
+  .site-header {
+    max-width: 900px; } }
+
+  .site-header #site-logo {
+    margin: 10px;
+    cursor: pointer;
+    width: 50px;
+    height: 50px; }
+    @media (max-width: 900px) {
+      .site-header #site-logo {
+        display: none; } }
+  .site-header .site-nav {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center; }
+    .site-header .site-nav .page-link {
+      margin: 10px;
+      padding: 25px; }
+      @media (max-width: 846px) {
+        .site-header .site-nav .page-link {
+          padding: 15px; } }
+  @media (max-width: 846px) and (max-width: 727px) {
+    .site-header .site-nav .page-link {
+      padding: 0; } }
+
+.page {
+  max-width: 900px;
+  margin: 0 auto; }
+
+.page#blog #post-list {
+  padding: 0; }
+
+#post {
+  max-width: 900px;
+  margin: 0 auto; }
+  #post #post-title {
+    text-align: center; }
+  #post #post-meta {
+    text-align: center; }
+    @media (max-width: 600px) {
+      #post #post-meta #category-list, #post #post-meta #tag-list {
+        display: block; }
+      #post #post-meta .separator {
+        display: none; } }
+
+footer {
+  max-width: 900px;
+  margin: 10px auto 0 auto;
+  padding: 10px 0; }
+
+body {
+  background-color: #EEEEEE; }
+  body ::selection {
+    background-color: #ff0000;
+    color: #fff; }
+  body .site-header nav .page-link {
+    font-family: "Rufina", serif;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 20px;
+    color: #000;
+    transition: all 0.45s ease; }
+  body .site-header nav .page-link:hover {
+    color: #ff0000;
+    fill: #ff0000; }
+  body #feature-image-container {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    transition: all 0.45s ease;
+    background-size: cover; }
+    body #feature-image-container #feature-text {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-family: "Rufina", serif;
+      font-size: 7em; }
+  body .page {
+    transition: all 0.45s ease; }
+    body .page h1, body .page h2, body .page h3, body .page h4, body .page h5 {
+      font-family: "Rufina", serif;
+      font-weight: 700; }
+    body .page p {
+      font-family: "Open Sans", sans-serif; }
+    body .page a {
+      text-decoration: none;
+      color: #700;
+      transition: all 0.45s ease;
+      font-family: "Open Sans", sans-serif; }
+    body .page a:hover {
+      color: #ff0000; }
+    body .page ul li, body .page ol li {
+      font-family: "Open Sans", sans-serif; }
+    body .page table tr td {
+      font-family: "Open Sans", sans-serif; }
+    body .page #loading-icon {
+      margin: 0 auto;
+      display: block; }
+  body .page#home #plan-disclaimer {
+    font-weight: 300;
+    font-size: 0.75em;
+    font-style: italic; }
+  body .page#blog #post-list, body .page#blog #item-list, body .page#categories #post-list, body .page#categories #item-list, body .page#tags #post-list, body .page#tags #item-list {
+    list-style-type: none; }
+    body .page#blog #post-list .tag, body .page#blog #post-list .category, body .page#blog #item-list .tag, body .page#blog #item-list .category, body .page#categories #post-list .tag, body .page#categories #post-list .category, body .page#categories #item-list .tag, body .page#categories #item-list .category, body .page#tags #post-list .tag, body .page#tags #post-list .category, body .page#tags #item-list .tag, body .page#tags #item-list .category {
+      font-family: "Rufina", serif;
+      font-size: 20px;
+      color: #000;
+      text-decoration: none;
+      transition: all 0.45s ease; }
+    body .page#blog #post-list .tag:hover, body .page#blog #post-list .category:hover, body .page#blog #item-list .tag:hover, body .page#blog #item-list .category:hover, body .page#categories #post-list .tag:hover, body .page#categories #post-list .category:hover, body .page#categories #item-list .tag:hover, body .page#categories #item-list .category:hover, body .page#tags #post-list .tag:hover, body .page#tags #post-list .category:hover, body .page#tags #item-list .tag:hover, body .page#tags #item-list .category:hover {
+      color: #ff0000; }
+    body .page#blog #post-list #all-categories, body .page#blog #post-list #all-tags, body .page#blog #item-list #all-categories, body .page#blog #item-list #all-tags, body .page#categories #post-list #all-categories, body .page#categories #post-list #all-tags, body .page#categories #item-list #all-categories, body .page#categories #item-list #all-tags, body .page#tags #post-list #all-categories, body .page#tags #post-list #all-tags, body .page#tags #item-list #all-categories, body .page#tags #item-list #all-tags {
+      font-family: "Open Sans", sans-serif;
+      text-decoration: none;
+      font-size: 12px;
+      color: #000;
+      font-weight: 300; }
+      body .page#blog #post-list #all-categories #return-link, body .page#blog #post-list #all-tags #return-link, body .page#blog #item-list #all-categories #return-link, body .page#blog #item-list #all-tags #return-link, body .page#categories #post-list #all-categories #return-link, body .page#categories #post-list #all-tags #return-link, body .page#categories #item-list #all-categories #return-link, body .page#categories #item-list #all-tags #return-link, body .page#tags #post-list #all-categories #return-link, body .page#tags #post-list #all-tags #return-link, body .page#tags #item-list #all-categories #return-link, body .page#tags #item-list #all-tags #return-link {
+        text-decoration: none;
+        color: #000;
+        font-weight: 700;
+        transition: all 0.45s ease; }
+      body .page#blog #post-list #all-categories #return-link:hover, body .page#blog #post-list #all-tags #return-link:hover, body .page#blog #item-list #all-categories #return-link:hover, body .page#blog #item-list #all-tags #return-link:hover, body .page#categories #post-list #all-categories #return-link:hover, body .page#categories #post-list #all-tags #return-link:hover, body .page#categories #item-list #all-categories #return-link:hover, body .page#categories #item-list #all-tags #return-link:hover, body .page#tags #post-list #all-categories #return-link:hover, body .page#tags #post-list #all-tags #return-link:hover, body .page#tags #item-list #all-categories #return-link:hover, body .page#tags #item-list #all-tags #return-link:hover {
+        color: #ff0000; }
+    body .page#blog #post-list .post-link, body .page#blog #item-list .post-link, body .page#categories #post-list .post-link, body .page#categories #item-list .post-link, body .page#tags #post-list .post-link, body .page#tags #item-list .post-link {
+      font-family: "Rufina", serif;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 30px;
+      color: #000;
+      transition: all 0.45s ease; }
+    body .page#blog #post-list .post-link:hover, body .page#blog #item-list .post-link:hover, body .page#categories #post-list .post-link:hover, body .page#categories #item-list .post-link:hover, body .page#tags #post-list .post-link:hover, body .page#tags #item-list .post-link:hover {
+      color: #ff0000; }
+    body .page#blog #post-list .post-excerpt, body .page#blog #item-list .post-excerpt, body .page#categories #post-list .post-excerpt, body .page#categories #item-list .post-excerpt, body .page#tags #post-list .post-excerpt, body .page#tags #item-list .post-excerpt {
+      font-family: "Open Sans", sans-serif; }
+    body .page#blog #post-list .post-meta, body .page#blog #item-list .post-meta, body .page#categories #post-list .post-meta, body .page#categories #item-list .post-meta, body .page#tags #post-list .post-meta, body .page#tags #item-list .post-meta {
+      font-family: "Open Sans", sans-serif;
+      font-size: 12px;
+      color: #999; }
+      body .page#blog #post-list .post-meta .post-category, body .page#blog #post-list .post-meta .post-tag, body .page#blog #item-list .post-meta .post-category, body .page#blog #item-list .post-meta .post-tag, body .page#categories #post-list .post-meta .post-category, body .page#categories #post-list .post-meta .post-tag, body .page#categories #item-list .post-meta .post-category, body .page#categories #item-list .post-meta .post-tag, body .page#tags #post-list .post-meta .post-category, body .page#tags #post-list .post-meta .post-tag, body .page#tags #item-list .post-meta .post-category, body .page#tags #item-list .post-meta .post-tag {
+        text-decoration: none;
+        color: #999;
+        font-weight: 700;
+        transition: all 0.45s ease; }
+      body .page#blog #post-list .post-meta .post-category:hover, body .page#blog #post-list .post-meta .post-tag:hover, body .page#blog #item-list .post-meta .post-category:hover, body .page#blog #item-list .post-meta .post-tag:hover, body .page#categories #post-list .post-meta .post-category:hover, body .page#categories #post-list .post-meta .post-tag:hover, body .page#categories #item-list .post-meta .post-category:hover, body .page#categories #item-list .post-meta .post-tag:hover, body .page#tags #post-list .post-meta .post-category:hover, body .page#tags #post-list .post-meta .post-tag:hover, body .page#tags #item-list .post-meta .post-category:hover, body .page#tags #item-list .post-meta .post-tag:hover {
+        color: #ff0000; }
+  body #post #post-header {
+    width: 100%;
+    display: block;
+    background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc1JyBoZWlnaHQ9JzUnPgogIDxyZWN0IHdpZHRoPSc1JyBoZWlnaHQ9JzUnIGZpbGw9J3doaXRlJy8+CiAgPHBhdGggZD0nTTAgNUw1IDBaTTYgNEw0IDZaTS0xIDFMMSAtMVonIHN0cm9rZT0nIzg4OCcgc3Ryb2tlLXdpZHRoPScxJy8+Cjwvc3ZnPg==);
+    background-repeat-y: no-repeat;
+    background-position-y: 100%;
+    padding: 0 0 10px 0;
+    background-origin: content-box; }
+    body #post #post-header #post-title {
+      font-family: "Rufina", serif;
+      color: #000;
+      font-weight: 700;
+      font-size: 3em; }
+    body #post #post-header #post-meta {
+      font-family: "Open Sans", sans-serif;
+      font-size: 12px;
+      color: #999; }
+      body #post #post-header #post-meta .post-category, body #post #post-header #post-meta .post-tag {
+        text-decoration: none;
+        color: #999;
+        font-weight: 700;
+        transition: all 0.45s ease; }
+      body #post #post-header #post-meta .post-category:hover, body #post #post-header #post-meta .post-tag:hover {
+        color: #ff0000; }
+  body #post #post-content {
+    font-family: "Open Sans", sans-serif;
+    color: #000; }
+    body #post #post-content a {
+      text-decoration: none;
+      color: #700;
+      transition: all 0.45s ease;
+      font-family: "Open Sans", sans-serif; }
+    body #post #post-content a:hover {
+      color: #ff0000; }
+    body #post #post-content ol {
+      list-style-type: lower-roman; }
+    body #post #post-content ul {
+      list-style-type: disc; }
+    body #post #post-content .code-snippet, body #post #post-content .inline-snippet {
+      margin: 10px;
+      padding: 10px 25px;
+      background-color: #DCDCDC; }
+    body #post #post-content .inline-snippet {
+      padding: 0 10px;
+      margin: 0;
+      font-size: 0.75em; }
+  body .page#portfolio {
+    width: 100%; }
+    body .page#portfolio #projects-container {
+      width: 100%; }
+      body .page#portfolio #projects-container .project-link {
+        font-family: "Rufina", serif;
+        font-size: 20px;
+        font-weight: 700;
+        color: #000;
+        text-decoration: none;
+        transition: all 0.45s ease; }
+        body .page#portfolio #projects-container .project-link .project-link-icon {
+          margin: 0 0 0 10px;
+          fill: #CCC;
+          display: none; }
+      body .page#portfolio #projects-container .project-link:hover {
+        color: #ff0000; }
+        body .page#portfolio #projects-container .project-link:hover .project-link-icon {
+          display: inline; }
+      body .page#portfolio #projects-container .project-description {
+        font-family: "Open Sans", sans-serif; }
+  body .post {
+    transition: all 0.45s ease; }
+  body footer {
+    border-top: 1px dotted #333;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; }
+    body footer a {
+      text-decoration: none;
+      color: #700;
+      transition: all 0.45s ease;
+      font-family: "Open Sans", sans-serif;
+      margin: 5px; }
+      body footer a svg {
+        fill: #000;
+        transition: all 0.45s ease; }
+    body footer a:hover {
+      color: #ff0000; }
+      body footer a:hover svg {
+        fill: #ff0000; }

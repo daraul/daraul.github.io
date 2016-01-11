@@ -161,8 +161,8 @@ body {
     width: 100%;
     display: block;
     background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc1JyBoZWlnaHQ9JzUnPgogIDxyZWN0IHdpZHRoPSc1JyBoZWlnaHQ9JzUnIGZpbGw9J3doaXRlJy8+CiAgPHBhdGggZD0nTTAgNUw1IDBaTTYgNEw0IDZaTS0xIDFMMSAtMVonIHN0cm9rZT0nIzg4OCcgc3Ryb2tlLXdpZHRoPScxJy8+Cjwvc3ZnPg==);
-    background-repeat-y: no-repeat;
-    background-position-y: 100%;
+    background-repeat: repeat-x;
+    background-position: 0 100%;
     padding: 0 0 10px 0;
     background-origin: content-box; }
     body #post #post-header #post-title {

@@ -122,7 +122,7 @@
     };
     
     function decodeURL() {
-        var requestedCategory = location.hash.replace("#", "");
+        var requestedCategory = decodeURI(location.hash).replace("#", "");
         
         var categoryElement = $("#" + requestedCategory)[0];
         
@@ -180,7 +180,7 @@
 </ul>
 
 <script>
-    updateList(location.hash.slice(1));
+    updateList(decodeURI(location.hash).slice(1));
 </script>
 </div>
 

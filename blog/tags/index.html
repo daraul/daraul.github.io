@@ -78,5 +78,5 @@ identifier: tags
 </ul>
 
 <script>
-    updateList(location.hash.slice(1));
+    updateList(decodeURI(location.hash).slice(1));
 </script>

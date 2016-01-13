@@ -42,7 +42,7 @@ identifier: tags
             for(var i = 0; i < posts.length; i++){
                 var post = posts[i];
                 
-                var date = new Date(post.date);
+                var date = new Date(post.date.slice(0, post.date.length - 6).replace(" ", "T"));
                 var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
                 var post_date = months[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
                 
